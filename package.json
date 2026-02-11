@@ -1,50 +1,67 @@
 {
-  "name": "novellum-mgmt",
-  "version": "1.0.0",
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
-  "private": true,
-  "workspaces": [
-    "frontend",
-    "backend",
-    "shared"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run dev -w frontend\" \"npm run dev -w backend\"",
-    "dev:frontend": "npm run dev -w frontend",
-    "dev:backend": "npm run dev -w backend",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "husky"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "concurrently": "^9.2.1",
-    "eslint": "^9.15.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^15.12.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.8.1",
-    "typescript-eslint": "^8.16.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "name": "novellum-mgmt",
+    "version": "1.0.0",
+    "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+    "private": true,
+    "workspaces": [
+        "frontend",
+        "backend",
+        "shared"
     ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
-  }
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "concurrently \"npm run dev -w frontend\" \"npm run dev -w backend\"",
+        "dev:frontend": "npm run dev -w frontend",
+        "dev:backend": "npm run dev -w backend",
+        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+        "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "prepare": "husky"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@eslint/js": "^9.15.0",
+        "concurrently": "^9.2.1",
+        "eslint": "^9.15.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "eslint-plugin-react-hooks": "^7.0.1",
+        "eslint-plugin-react-refresh": "^0.4.24",
+        "globals": "^15.12.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.8.1",
+        "typescript-eslint": "^8.16.0"
+    },
+    "lint-staged": {
+        "frontend/**/*.{ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "backend/**/*.ts": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "shared/**/*.ts": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "frontend/**/*.{json,md}": [
+            "prettier --write"
+        ],
+        "backend/**/*.{json,md}": [
+            "prettier --write"
+        ],
+        "shared/**/*.{json,md}": [
+            "prettier --write"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
+    }
 }
