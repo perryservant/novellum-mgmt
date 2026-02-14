@@ -8,9 +8,9 @@ import {
 
 export const AppHeader = () => {
     return (
-        <div className="h-[47px] w-full flex justify-between items-center px-3 bg-neutral-800 rounded-lg">
+        <div className="h-[47px] w-full flex justify-between items-center">
             {/* Left */}
-            <div className="flex1 flex gap-8 items-center">
+            <div className="w-fit h-full flex gap-8 items-center text-white bg-white/20 backdrop-blur-sm rounded-lg px-3">
                 <div className="flex items-center gap-3">
                     <img className="h-[25px]" src="/g3.svg" alt="Logo" />
                     <p className="font-semibold text-lg">Novellum</p>
@@ -28,7 +28,7 @@ export const AppHeader = () => {
             </div>
 
             {/* Right */}
-            <div className="w-fit h-full flex justify-center items-center gap-6">
+            <div className="w-fit h-full flex justify-center items-center gap-6 bg-white/20 backdrop-blur-sm rounded-lg px-3">
                 <div className="flex gap-1 bg-white/95 pl-2 pr-1 py-[2px] rounded-xl items-center">
                     <p className="text-black text-sm">Sunshine Harbour</p>
                     <CheckCircleIcon className="w-[20px] text-green-500 animate-green-glow" />
