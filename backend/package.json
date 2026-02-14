@@ -8,13 +8,19 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "tsx watch src/index.ts",
-        "start": "tsx src/index.ts"
+        "start": "tsx src/index.ts",
+        "db:migrate": "dotenv -e .env -- node-pg-migrate up --migrations-table novellum_mgmt.pgmigrations --schema novellum_mgmt --database-url-var DATABASE_URL",
+        "db:migrate:up": "dotenv -e .env -- node-pg-migrate up --migrations-table novellum_mgmt.pgmigrations --schema novellum_mgmt --database-url-var DATABASE_URL",
+        "db:migrate:down": "dotenv -e .env -- node-pg-migrate down --migrations-table novellum_mgmt.pgmigrations --schema novellum_mgmt --database-url-var DATABASE_URL",
+        "db:migrate:create": "dotenv -e .env -- node-pg-migrate create --migrations-table novellum_mgmt.pgmigrations --migration-file-language sql"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "fastify": "^5.7.4"
+        "fastify": "^5.7.4",
+        "node-pg-migrate": "^8.0.3",
+        "dotenv-cli": "^11.0.0"
     },
     "devDependencies": {
         "tsx": "^4.21.0"

@@ -1,0 +1,56 @@
+import {
+    BellIcon,
+    ChevronDownIcon,
+    CheckCircleIcon,
+    HomeIcon,
+    TableCellsIcon
+} from "@heroicons/react/24/outline";
+
+export const AppHeader = () => {
+    return (
+        <div className="h-[47px] w-full flex justify-between items-center px-3 bg-neutral-800 rounded-lg">
+            {/* Left */}
+            <div className="flex1 flex gap-8 items-center">
+                <div className="flex items-center gap-3">
+                    <img className="h-[25px]" src="/g3.svg" alt="Logo" />
+                    <p className="font-semibold text-lg">Novellum</p>
+                </div>
+                <div className="text-white/80 text-sm font-bold">
+                    <ul className="flex gap-6">
+                        <li className="flex gap-2">
+                            <HomeIcon className="w-[17px]" /> Home
+                        </li>
+                        <li className="flex gap-2">
+                            <TableCellsIcon className="w-[17px]" /> Leads
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {/* Right */}
+            <div className="w-fit h-full flex justify-center items-center gap-6">
+                <div className="flex gap-1 bg-white/95 pl-2 pr-1 py-[2px] rounded-xl items-center">
+                    <p className="text-black text-sm">Sunshine Harbour</p>
+                    <CheckCircleIcon className="w-[20px] text-green-500 animate-green-glow" />
+                </div>
+
+                {/* Command Center */}
+                <div className="flex items-center justify-center gap-3">
+                    <div className="flex gap-2">
+                        <div className="w-[20px] text-white/60">
+                            <BellIcon />
+                        </div>
+                    </div>
+                    <div className="flex gap-1">
+                        <div className="w-[35px] h-[35px] rounded-full flex justify-center items-center bg-white/20">
+                            <p className="text-white/50 text-sm font-bold">PS</p>
+                        </div>
+                        <div className="flex justify-center items-center">
+                            <ChevronDownIcon className="text-white w-[16px]" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};

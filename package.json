@@ -18,7 +18,13 @@
         "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
-        "prepare": "husky"
+        "prepare": "husky",
+        "docker:up": "docker compose -f infra/local/docker-compose.yml up -d",
+        "docker:down": "docker compose -f infra/local/docker-compose.yml down",
+        "docker:logs": "docker compose -f infra/local/docker-compose.yml logs -f",
+        "docker:clean": "docker compose -f infra/local/docker-compose.yml down -v",
+        "docker:reset": "npm run docker:clean && npm run docker:up && sleep 5 && npm run db:migrate",
+        "db:migrate": "cd backend && npm run db:migrate"
     },
     "keywords": [],
     "author": "",
