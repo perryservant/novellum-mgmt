@@ -15,7 +15,7 @@ export const RadialRingChart = () => {
                 endAngle={360}
                 padding={0.25}
                 cornerRadius={5}
-                colors={["#65ee97", "#94a3b8"]}
+                colors={["#0eebdd", "#94a3b8"]}
                 enableRadialGrid={false}
                 enableCircularGrid={false}
                 layers={["bars", "tracks"]}
