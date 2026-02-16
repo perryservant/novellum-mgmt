@@ -1,16 +1,6 @@
-import Fastify from "fastify";
+import "dotenv/config";
+import { startServer } from "./api/server";
 
-const fastify = Fastify({ logger: true });
+import "./storage/database";
 
-fastify.get("/", async () => ({ ok: true, message: "Backend is running" }));
-
-const start = async () => {
-    try {
-        await fastify.listen({ port: 4000, host: "0.0.0.0" });
-    } catch (error) {
-        fastify.log.error(error);
-        process.exit(1);
-    }
-};
-
-start();
+startServer();
