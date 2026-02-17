@@ -1,10 +1,16 @@
 import Fastify from "fastify";
 import "@fastify/jwt";
+import "@fastify/cors";
 import { authRoutes } from "./routes/auth";
 
 export const buildServer = async () => {
     const fastify = Fastify({
         logger: true
+    });
+
+    await fastify.register(import("@fastify/cors"), {
+        origin: ["http://localhost:3000"],
+        credentials: true
     });
 
     fastify.register(import("@fastify/jwt"), {

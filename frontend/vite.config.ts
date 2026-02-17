@@ -7,5 +7,11 @@ export default defineConfig({
     plugins: [react(), tailwindcss()],
     server: {
         port: 3000
+    },
+    resolve: {
+        alias: {
+            "@novellum-mgmt/shared":
+                "/Users/DEDSEC/Documents/Full-Stack Projects/novellum-mgmt/shared/src"
+        }
     }
 });

@@ -1,9 +1,38 @@
 import { useState } from "react";
 import { Input } from "../components/common/Input";
 import { Button } from "../components/common/Button";
+import { useAuthStore } from "../stores/authStore";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+    const [step, setStep] = useState<"email" | "password">("email");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const { login, isLoading } = useAuthStore();
+    const navigate = useNavigate();
+
+    const handleEmailSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) {
+            setError("Please enter your email");
+            return;
+        }
+        setStep("password");
+        setError("");
+    };
+
+    const handleLoginSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError("");
+
+        try {
+            await login(email, password);
+            navigate("/");
+        } catch (error) {
+            setError(error instanceof Error ? error.message : "Login failed");
+        }
+    };
 
     return (
         <div className="relative h-screen w-screen flex justify-center items-center">
@@ -19,25 +48,49 @@ export const Login = () => {
                     <img className="h-[60px]" src="/g3.svg" alt="Logo" />
                 </div>
                 <div>
-                    <form className="flex justify-between gap-4">
-                        <div className="flex-1">
-                            <Input
-                                id="email"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="email"
-                            />
+                    {error && (
+                        <div className="bg-red-500/20 border border-red-500 text-red-100 px-3 py-2 rounded mb-4 text-sm">
+                            {error}
                         </div>
-                        <div className="flex">
-                            <Button type="submit">Login</Button>
-                        </div>
-                    </form>
+                    )}
+
+                    {step === "email" ? (
+                        <form onSubmit={handleEmailSubmit} className="flex justify-between gap-4">
+                            <div className="flex-1">
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="email"
+                                />
+                            </div>
+                            <div className="flex">
+                                <Button type="submit">Next</Button>
+                            </div>
+                        </form>
+                    ) : (
+                        <form onSubmit={handleLoginSubmit} className="flex justify-between gap-4">
+                            <div className="flex-1">
+                                <Input
+                                    id="password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="password"
+                                />
+                            </div>
+                            <div className="flex">
+                                <Button type="submit" disabled={isLoading}>
+                                    {isLoading ? "Logging in..." : "Login"}
+                                </Button>
+                            </div>
+                        </form>
+                    )}
                 </div>
                 <div>
                     <p className="text-white/70 text-xs">
-                        is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                        has been the industry's standard dummy text ever since the 1500s
+                        is simply dummy text of the printing and typesetting industry
                     </p>
                 </div>
             </div>
