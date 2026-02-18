@@ -99,9 +99,8 @@ We're building Novellum **with our users, not just for them**. Our development r
 
 Interested in joining our beta program or have questions about Novellum?
 
-- **Email**: [Your contact email]
+- **Email**: perry@perryservant.com
 - **Website**: [Coming soon]
-- **Discord Community**: [Coming soon]
 
 ## Development
 
