@@ -1,73 +1,128 @@
-# React + TypeScript + Vite
+# Novellum Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive business management platform designed to help small businesses streamline their lead management, client communications, and document workflows.
 
-Currently, two official plugins are available:
+## Mission
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Novellum empowers small businesses by providing an intuitive platform for managing leads, tracking client interactions, and automating routine communications. Built specifically for **Real Estate** and **Construction** businesses with plans to expand to other industries.
 
-## React Compiler
+## Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### For Managers
 
-## Expanding the ESLint configuration
+- **Lead Management**: Track incoming leads and assign them to team members
+- **Team Oversight**: Monitor user activities, contact history, and performance
+- **Document Tracking**: Monitor estimates and documents sent to clients
+- **Workflow Management**: Ensure smooth handoffs between team members
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### For Users
 
-```js
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
+- **Lead Dashboard**: View leads by status (New, Ongoing, Past)
+- **Client Communication**: Track emails, calls, and contact history
+- **Document Management**: Create, send, and track estimates and documents
+- **Auto-Pilot Mode**: Automated email sequences for new leads and clients
+- **Real-time Updates**: Stay informed about lead status changes
 
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked
+## Current Status
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname
-            }
-            // other options...
-        }
-    }
-]);
+**Work in Progress** - We're actively developing this platform based on real user feedback.
+
+### Completed
+
+- User authentication system
+- Role-based access (Manager/User)
+- Basic dashboard structure
+- Lead management foundation
+
+### In Development
+
+- Lead assignment system
+- Email tracking and automation
+- Document generation and tracking
+- Auto-Pilot communication features
+
+### Coming Soon
+
+- Advanced analytics and reporting
+- Mobile app
+- Integration with popular CRM systems
+- Industry-specific templates (Real Estate, Construction)
+- Team collaboration tools
+- Automated follow-up sequences
+
+## Technology Stack
+
+### Frontend
+
+- **React 19** with TypeScript
+- **Vite** for fast development
+- **TailwindCSS** for styling
+- **React Router** for navigation
+- **Zustand** for state management
+- **React Query** for server state
+- **React Hook Form** for forms
+
+### Backend
+
+- **Node.js** with Fastify
+- **TypeScript** for type safety
+- **PostgreSQL** for data storage
+- **JWT** for authentication
+- **PBKDF2** for password hashing
+
+## Target Industries
+
+### Primary Focus
+
+- **Real Estate Agencies**: Lead tracking, property management, client communication
+- **Construction Companies**: Project leads, client management, estimate tracking
+
+### Future Expansion
+
+- Consulting firms
+- Service-based businesses
+- Freelance professionals
+- Small agencies
+
+## Our Approach
+
+We're building Novellum **with our users, not just for them**. Our development roadmap is driven by real feedback from small business owners and managers who need practical solutions to everyday challenges.
+
+### User-Driven Development
+
+- Regular feedback sessions with beta users
+- Iterative feature releases based on actual needs
+- Responsive support and feature requests
+- Transparent development roadmap
+
+## Get in Touch
+
+Interested in joining our beta program or have questions about Novellum?
+
+- **Email**: [Your contact email]
+- **Website**: [Coming soon]
+- **Discord Community**: [Coming soon]
+
+## Development
+
+This is a monorepo with separate frontend and backend applications:
+
+```bash
+# Frontend (React/Vite)
+cd frontend
+npm install
+npm run dev
+
+# Backend (Node.js/Fastify)
+cd backend
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## License
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+© 2026 Novellum Management Platform. All rights reserved.
 
-export default defineConfig([
-    globalIgnores(["dist"]),
-    {
-        files: ["**/*.{ts,tsx}"],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs["recommended-typescript"],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-                tsconfigRootDir: import.meta.dirname
-            }
-            // other options...
-        }
-    }
-]);
-```
+---
+
+**Note**: Novellum is currently in active development. Features and functionality are evolving based on user feedback and market needs.
