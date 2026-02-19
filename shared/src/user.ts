@@ -1,3 +1,16 @@
+export interface UserResponse {
+    success: boolean;
+    data: {
+        user: User;
+    };
+}
+export interface AuthResponse {
+    success: boolean;
+    data: {
+        token: string;
+        user: User;
+    };
+}
 export interface User {
     id: string;
     email: string;

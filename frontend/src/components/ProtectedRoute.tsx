@@ -6,9 +6,10 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-    const { isAuthenticated, isLoading } = useAuthStore();
+    const { isAuthenticated, isLoading, isInitialized } = useAuthStore();
 
-    if (isLoading) {
+    // Show loading while auth is being initialized
+    if (isLoading || !isInitialized) {
         return (
             <div className="h-screen flex items-center justify-center">
                 <div className="text-sm">Loading...</div>
@@ -16,6 +17,7 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
         );
     }
 
+    // Only redirect to login if auth is initialized AND user is not authenticated
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
     }

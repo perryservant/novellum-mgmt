@@ -6,6 +6,7 @@ interface AuthStore {
     user: User | null;
     isAuthenticated: boolean;
     isLoading: boolean;
+    isInitialized: boolean;
 
     login: (email: string, password: string) => Promise<void>;
     register: (userData: CreateUserInput) => Promise<void>;
@@ -14,11 +15,51 @@ interface AuthStore {
     setUser: (user: User | null) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useAuthStore = create<AuthStore>((set, get) => ({
     user: null,
     isAuthenticated: false,
     isLoading: false,
+    isInitialized: false,
+
+    initialize: async () => {
+        if (get().isInitialized) return;
+
+        const token = localStorage.getItem("auth_token");
+
+        if (token) {
+            try {
+                const response = await getCurrentUser();
+
+                if (response.success && response.data) {
+                    set({
+                        user: response.data.user,
+                        isAuthenticated: true,
+                        isLoading: false,
+                        isInitialized: true
+                    });
+                } else {
+                    clearAuthToken();
+                    set({
+                        user: null,
+                        isAuthenticated: false,
+                        isLoading: false,
+                        isInitialized: true
+                    });
+                }
+            } catch (error) {
+                clearAuthToken();
+                set({
+                    user: null,
+                    isAuthenticated: false,
+                    isLoading: false,
+                    isInitialized: true
+                });
+                throw error;
+            }
+        } else {
+            set({ isLoading: false, isInitialized: true });
+        }
+    },
 
     login: async (email: string, password: string) => {
         set({ isLoading: true });
@@ -59,26 +100,6 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     logout: () => {
         clearAuthToken();
         set({ user: null, isAuthenticated: false });
-    },
-
-    initialize: async () => {
-        const token = localStorage.getItem("auth_token");
-        if (token) {
-            try {
-                const response = await getCurrentUser();
-                if (response.success && response.data) {
-                    set({
-                        user: response.data.user,
-                        isAuthenticated: true
-                    });
-                }
-            } catch (error) {
-                clearAuthToken();
-                // get() available for accessing current state if needed later
-                // const currentState = get();
-                throw error;
-            }
-        }
     },
 
     setUser: (user: User | null) => {

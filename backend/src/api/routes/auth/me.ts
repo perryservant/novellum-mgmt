@@ -21,7 +21,7 @@ export const meRoute = async (fastify: FastifyInstance) => {
             }
 
             return reply.send({
-                succes: true,
+                success: true,
                 data: {
                     user: {
                         id: user.id,

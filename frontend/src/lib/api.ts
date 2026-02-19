@@ -1,27 +1,16 @@
-import type { User, CreateUserInput, LoginInput } from "../../../shared/src/user";
+import type {
+    User,
+    CreateUserInput,
+    LoginInput,
+    UserResponse,
+    AuthResponse
+} from "../../../shared/src/user";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 export interface ApiResponse<T = unknown> {
     success: boolean;
     data?: T;
-    error?: string;
-}
-
-export interface AuthResponse {
-    success: boolean;
-    data?: {
-        user: User;
-        token: string;
-    };
-    error?: string;
-}
-
-export interface UserReponse {
-    success: boolean;
-    data?: {
-        user: User;
-    };
     error?: string;
 }
 
@@ -79,7 +68,7 @@ export const register = async (userDate: CreateUserInput): Promise<AuthResponse>
     return response.json();
 };
 
-export const getCurrentUser = async (): Promise<UserReponse> => {
+export const getCurrentUser = async (): Promise<UserResponse> => {
     const token = getAuthToken();
 
     if (!token) {

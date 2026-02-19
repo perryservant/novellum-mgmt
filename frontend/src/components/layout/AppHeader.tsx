@@ -1,6 +1,9 @@
 import { BellIcon, ChevronDownIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import { useAuthStore } from "../../stores/authStore";
 
 export const AppHeader = () => {
+    const { user } = useAuthStore();
+
     return (
         <div className="h-[47px] w-full flex justify-between items-center">
             {/* Left */}
@@ -14,7 +17,7 @@ export const AppHeader = () => {
             {/* Right */}
             <div className="w-fit h-full flex justify-center items-center gap-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 border border-white/20">
                 <div className="flex gap-1 bg-white/95 pl-2 pr-1 py-[2px] rounded-xl items-center">
-                    <p className="text-black text-sm">Sunshine Harbour</p>
+                    <p className="text-black text-sm">{`${user?.first_name} ${user?.last_name}`}</p>
                     <CheckCircleIcon className="w-[20px] text-green-500 animate-green-glow" />
                 </div>
 
